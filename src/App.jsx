@@ -5,6 +5,7 @@ import { Header } from './componentes/Header.jsx'
 import { Footer } from './componentes/Footer.jsx'
 import {AboutUs } from './componentes/AboutUs.jsx'
 import {Carousel} from './componentes/Carousel.jsx'
+import {ShoppingCart } from './componentes/ShoppingCart.jsx'; 
 
 import serviciosImg from './assets/menu/servicios.svg'
 import productosImg from './assets/menu/productos.svg'
@@ -32,12 +33,35 @@ function App() {
   return (
     <>
       {rutaHeader}
-      <AboutUs />
-      <Carousel />
+      <Routes>
+        <Route path="/" element={
+          <>
+            <AboutUs />
+            <Carousel 
+              allProducts={allProducts}
+              setAllProducts={setAllProducts}
+              total={total}
+              setTotal={setTotal}
+              countProducts={countProducts}
+              setCountProducts={setCountProducts}
+              loggedIn={loggedIn}
+            />
+          </>
+        } />
+        <Route path="/carrito" element={
+          <ShoppingCart 
+            allProducts={allProducts}
+            setAllProducts={setAllProducts}
+            total={total}
+            setTotal={setTotal}
+            countProducts={countProducts}
+            setCountProducts={setCountProducts}
+          />
+        } />
+      </Routes>
       {rutaFooter}
     </>
-  )
-  
+  );
 }
   
 

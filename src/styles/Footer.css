@@ -11,7 +11,8 @@
 }
 .redes img{
     margin: 0 .5em;
-    width: 2dvw;
+    width: 30px;
+    margin-top: 20px;
     transition: .3s;
 }
 .footer a{
