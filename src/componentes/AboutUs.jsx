@@ -1,6 +1,6 @@
 import '../assets/imagerestaurant.png';
 import '../styles/AboutUs.css';
-import restaurant from '../assets/Restaurant.png'; 
+import restaurant from '../assets/restaurant.png'; 
 
 export function AboutUs() {
     return (

@@ -9,6 +9,7 @@ import {ShoppingCart } from './componentes/ShoppingCart.jsx';
 
 import serviciosImg from './assets/menu/servicios.svg'
 import productosImg from './assets/menu/productos.svg'
+import { Services } from './pages/Services.jsx'
 
 
 function App() {
@@ -48,6 +49,7 @@ function App() {
             />
           </>
         } />
+        <Route path="/services" element={<Services/>}/>
         <Route path="/carrito" element={
           <ShoppingCart 
             allProducts={allProducts}
@@ -70,9 +72,9 @@ function App() {
   const comprobarRuta = (countProducts, loggedIn, setLoggedIn) =>{
   if (location.pathname=="/"){
       return <Header 
-      ruta="/servicios" 
+      ruta="/services" 
       image={serviciosImg} 
-      nombre="Servicios" 
+      nombre="Services" 
       countProducts={countProducts} 
       loggedIn={loggedIn}
       setLoggedIn={setLoggedIn} />
