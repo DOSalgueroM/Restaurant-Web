@@ -44,17 +44,17 @@ export function Header(props) {
                     <Link to="/carrito">
                         <img src={carrito} alt="Carrito" />
                         <span className='cantidadProductos'>{props.countProducts}</span>
-                        <li>Carrito</li>
+                        <li>Card</li>
                     </Link>
                     {!props.loggedIn ? (
                         <Link to="/login">
                             <img src={iniciarSesion} alt="Iniciar Sesión" />
-                            <li>Iniciar<br />Sesión</li>
+                            <li>Login</li>
                         </Link>
                     ) : (
                         <a style={{ cursor: 'pointer' }} onClick={onCerrarSesion}>
                             <img src={salirS} alt="Cerrar Sesión" />
-                            <li>Cerrar<br />Sesión</li>
+                            <li>Log out</li>
                         </a>
                     )}
                 </ul>

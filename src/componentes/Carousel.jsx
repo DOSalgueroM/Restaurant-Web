@@ -1,27 +1,63 @@
-import React from 'react';
+import React, { useState } from 'react';
+import Popup from 'reactjs-popup';
 import '../styles/Carousel.css';
+import { productos } from '../dataProductos.js';
 
-const dishes = [
-    { id: 1, name: 'Special Salad', price: '$12', description: 'Food is any substance consumed by an organism for nutritional support.', image: null },
-    { id: 2, name: 'Russian Salad', price: '$12', description: 'Food is any substance consumed by an organism for nutritional support.', image: null },
-    { id: 3, name: 'Asian Salad', price: '$12', description: 'Food is any substance consumed by an organism for nutritional support.', image: null },
-    { id: 4, name: 'American Salad', price: '$12', description: 'Food is any substance consumed by an organism for nutritional support.', image: null },
-];
 
-export function Carousel() {
+
+export function Carousel({ allProducts, setAllProducts, total, setTotal, countProducts, setCountProducts, loggedIn }) {
+    const onAddProduct = product => {
+        /*if (!loggedIn) {
+            window.alert("Debes ingresar sesión para pedir productos");
+        } else {*/
+            if (allProducts.find(item => item.id === product.id)) {
+                const products = allProducts.map(item => 
+                    item.id === product.id ? { ...item, cantidad: item.cantidad + 1 } : item
+                );
+                setCountProducts(countProducts + product.cantidad);
+                setTotal(total + product.precioUnidad * product.cantidad);
+                return setAllProducts([...products]);
+            }
+
+            setCountProducts(countProducts + 1);
+            setTotal(total + product.precioUnidad * product.cantidad);
+            setAllProducts([...allProducts, product]);
+       // }
+    };
+
+    const [popupContent, setPopupContent] = useState('');
+
     return (
         <div className="carousel">
-            {dishes.map(dish => (
-                <div key={dish.id} className="carousel-item">
-                    <div className="price-tag">{dish.price}</div>
-                    <div className="image-placeholder">
-                        {}
-                    </div>
-                    <h3 className="dish-name">{dish.name}</h3>
-                    <p className="description">{dish.description}</p>
+            {productos.map(product => (
+                <div key={product.id} className="carousel-item">
+                    <div className="price-tag">{product.precioUnidad}Bs</div>
+                    <Popup
+                        trigger={
+                            <div className="image-container">
+                                <img
+                                    src={product.imagenSRC}
+                                    alt={product.nombreProducto}
+                                    onMouseEnter={() => setPopupContent(product.descripcion)}
+                                    onMouseLeave={() => setPopupContent('')}
+                                    className="image"
+                                />
+                            </div>
+                        }
+                        closeOnDocumentClick
+                        closeOnEscape
+                        position="bottom"
+                        on="hover"
+                    >
+                        <div className="popup-content">{popupContent}</div>
+                    </Popup>
+                    <h3 className="dish-name">{product.nombreProducto}</h3>
+                    <button onClick={() => onAddProduct(product)}>Add to cart</button>
                 </div>
             ))}
         </div>
     );
 }
+
+
 
