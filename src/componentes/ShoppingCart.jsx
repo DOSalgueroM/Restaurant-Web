@@ -24,19 +24,26 @@ export function ShoppingCart({ allProducts, setAllProducts, total, countProducts
         setCountProducts(countProducts - 1);
     };
 
-    // Alerta al usuario que la compra se ha realizado, o si el carrito está vacío.
     const onPagar = () => {
-        /*if (allProducts.length > 0) {
-            window.alert("Se ha realizado la compra correctamente \nGracias por preferirnos ☺");
-            setAllProducts([]);
-            setCountProducts(0);
-            setTotal(0);
-            retornar();
-        } else {
-            window.alert("No hay productos en el carrito :(");
-        }*/
+        if (allProducts.length === 0) {
+            alert("The cart is empty. Please add some products first!");
+            return;
+        }
+    
+        const pedido = allProducts.map(product => 
+            `${product.cantidad}x ${product.nombreProducto} - ${product.cantidad * product.precioUnidad}Bs`
+        ).join('\n');
+    
+        const mensaje = `This is my order Aroma Restaurant!!\n\n${pedido}\n\nTotal: ${total}Bs`;
+        const mensajeCodificado = encodeURIComponent(mensaje);
+    
+        const numeroWhatsApp = '59161882040';
+        const url = `https://api.whatsapp.com/send?phone=${numeroWhatsApp}&text=${mensajeCodificado}`;
+    
+        window.open(url, '_blank');
     };
-
+    
+    
     return (
         <div className='pageShoppingCart'>
             <button onClick={retornar} className='botonRegresar'>

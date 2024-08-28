@@ -5,11 +5,9 @@ import { productos } from '../dataProductos.js';
 
 
 
-export function Carousel({ allProducts, setAllProducts, total, setTotal, countProducts, setCountProducts, loggedIn }) {
+export function Carousel({ allProducts, setAllProducts, total, setTotal, countProducts, setCountProducts}) {
     const onAddProduct = product => {
-        /*if (!loggedIn) {
-            window.alert("Debes ingresar sesión para pedir productos");
-        } else {*/
+        
             if (allProducts.find(item => item.id === product.id)) {
                 const products = allProducts.map(item => 
                     item.id === product.id ? { ...item, cantidad: item.cantidad + 1 } : item
@@ -58,6 +56,3 @@ export function Carousel({ allProducts, setAllProducts, total, setTotal, countPr
         </div>
     );
 }
-
-
-

@@ -49,7 +49,16 @@ function App() {
             />
           </>
         } />
-        <Route path="/services" element={<Services/>}/>
+        <Route path="/services" element={
+          <Services
+              allProducts={allProducts}
+              setAllProducts={setAllProducts}
+              total={total}
+              setTotal={setTotal}
+              countProducts={countProducts}
+              setCountProducts={setCountProducts}
+          />
+          } />
         <Route path="/carrito" element={
           <ShoppingCart 
             allProducts={allProducts}

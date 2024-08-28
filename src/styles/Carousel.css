@@ -1,9 +1,10 @@
 .carousel {
     display: flex;
     justify-content: space-around;
-    padding: 20px;
+    padding: 40px;
     background-color: #fffdca; 
     flex-wrap: wrap;
+    gap: 20px;
 }
 
 .carousel-item {
