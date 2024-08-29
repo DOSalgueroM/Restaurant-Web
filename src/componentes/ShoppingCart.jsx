@@ -70,7 +70,7 @@ export function ShoppingCart({ allProducts, setAllProducts, total, countProducts
                         <div className="listaItems">
                             {allProducts.map(product => (
                                 <div className="item" key={product.id}>
-                                    <img className='xItem' src={xItem} alt="Eliminar" onClick={() => onDeleteProduct(product)} />
+                                    <img className='xItem' src={xItem} alt="Delete" onClick={() => onDeleteProduct(product)} />
                                     <img className="imagenShoppingCart" src={product.imagenSRC} alt={product.nombreProducto} />
                                     <span>{product.nombreProducto}</span>
                                     <div className="detalleItem">
