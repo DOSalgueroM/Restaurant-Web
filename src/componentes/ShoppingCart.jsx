@@ -30,15 +30,15 @@ export function ShoppingCart({ allProducts, setAllProducts, total, countProducts
             return;
         }
     
-        const pedido = allProducts.map(product => 
+        const order = allProducts.map(product => 
             `${product.cantidad}x ${product.nombreProducto} - ${product.cantidad * product.precioUnidad}Bs`
         ).join('\n');
     
-        const mensaje = `This is my order Aroma Restaurant!!\n\n${pedido}\n\nTotal: ${total}Bs`;
-        const mensajeCodificado = encodeURIComponent(mensaje);
+        const mensage = `This is my order Aroma Restaurant!!\n\n${order}\n\nTotal: ${total}Bs`;
+        const mensageCodificated = encodeURIComponent(mensage);
     
-        const numeroWhatsApp = '59161882040';
-        const url = `https://api.whatsapp.com/send?phone=${numeroWhatsApp}&text=${mensajeCodificado}`;
+        const numberWhatsApp = '59161882040';
+        const url = `https://api.whatsapp.com/send?phone=${numberWhatsApp}&text=${mensageCodificated}`;
     
         window.open(url, '_blank');
     };
