@@ -1,14 +1,10 @@
 export const users = [
     {
-        user : 'Isaac',
+        user : 'Fer',
         password : '123'
     },
     {
-        user : 'Kevin',
-        password : '345'
-    },
-    {
-        user : 'Alejo',
-        password : '345'
+        user : 'Davi',
+        password : '123'
     }
 ]
