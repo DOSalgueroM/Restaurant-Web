@@ -4,11 +4,17 @@
     padding: 80px;
     background-color: #fffdca;
     text-align: center;
+    justify-content: center;
+    align-items: center;
+    padding-top: 100px; 
+    padding-bottom: 100px;
+   
 }
 
 .about-us-content {
     flex: 1;
-    padding: 20px;
+    padding: 10px;
+    max-width: 600px; 
   }
 
 .about-us-image {
@@ -16,11 +22,15 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-top: 20px; 
+    margin-bottom: 20px;
 }
 .about-us-image img {
     max-width: 100%;
     height: auto;
     border-radius: 10px;
+    margin-top: 20px; 
+    margin-bottom: 20px;
   }
 
 /*.about-us-text {

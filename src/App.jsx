@@ -6,6 +6,8 @@ import { Footer } from './componentes/Footer.jsx'
 import {AboutUs } from './componentes/AboutUs.jsx'
 import {Carousel} from './componentes/Carousel.jsx'
 import {ShoppingCart } from './componentes/ShoppingCart.jsx'; 
+import { Login }  from './componentes/Login.jsx'
+import { Register } from './componentes/Register.jsx'
 
 import serviciosImg from './assets/menu/servicios.svg'
 import productosImg from './assets/menu/productos.svg'
@@ -19,14 +21,13 @@ function App() {
   const [countProducts, setCountProducts] = useState(0)
 
   //Login states
-  const [loginAdmin, setLoginAdmin] = useState(false)
   const [loggedIn, setLoggedIn] = useState(false)
 
   let location=useLocation();
   let rutaHeader, rutaFooter=null;
 
   //Show header and footer only when needed
-  if (location.pathname!='/login' & location.pathname!='/carrito' & !/admin/.test(location.pathname) & location.pathname!='/register'){
+  if (location.pathname!='/login' & location.pathname!='/carrito' & location.pathname!='/register'){
     rutaHeader=comprobarRuta(countProducts, loggedIn, setLoggedIn);
     rutaFooter=<Footer />
   }
@@ -49,6 +50,13 @@ function App() {
             />
           </>
         } />
+        <Route path="/login" element={
+              <Login 
+                loggedIn={loggedIn} 
+                setLoggedIn={setLoggedIn} 
+              />
+            }
+          />
         <Route path="/services" element={
           <Services
               allProducts={allProducts}
@@ -59,6 +67,9 @@ function App() {
               setCountProducts={setCountProducts}
           />
           } />
+          <Route path='/register' element={<Register 
+            
+            />}/>
         <Route path="/carrito" element={
           <ShoppingCart 
             allProducts={allProducts}
@@ -69,6 +80,7 @@ function App() {
             setCountProducts={setCountProducts}
           />
         } />
+        
       </Routes>
       {rutaFooter}
     </>
