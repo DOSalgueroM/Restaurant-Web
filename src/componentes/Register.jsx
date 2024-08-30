@@ -16,12 +16,32 @@ export function Register(){
     
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const [address, setAddress] = useState('');
+    const [email, setEmail] = useState(''); 
 
     function handleChangeUsuario(event) {
         setUsername(event.target.value);
     }
     function handleChangePassword(event) {
         setPassword(event.target.value);
+    }
+    function handleChangeAddress(event) {
+        setAddress(event.target.value);
+    }
+    function handleChangeEmail(event) {
+        setEmail(event.target.value);
+    }
+    function handleRegister() {
+        const user = {
+            user: username,
+            password: password,
+            address: address,
+            email: email
+        };
+        const existingUsers = JSON.parse(localStorage.getItem('users')) || [];
+        existingUsers.push(user);
+        localStorage.setItem('users', JSON.stringify(existingUsers));
+        navigate('/login');
     }
     return (
         <>
@@ -39,20 +59,19 @@ export function Register(){
                     </div>
                     <div className="inputLogin">
                         <label >Address </label>
-                        <input type="text" placeholder='Enter your address'/>
+                        <input onChange={handleChangeAddress} value={address} type="text" placeholder='Enter your address' />
                     </div>
-                    <div className="inputLogin">
                     <div className="inputLogin">
                         <label >Email </label>
-                        <input  type="email" placeholder='Enter your email'/>
+                        <input onChange={handleChangeEmail} value={email} type="email" placeholder='Enter your email' />
                     </div>
+                    <div className="inputLogin">
                         <label >Password</label>
                         <input onChange={handleChangePassword} value={password} type="password" placeholder='Enter your password'/>
                     </div>
-                    <button>REGISTER</button>
+                    <button onClick={handleRegister}>REGISTER</button>
                     <p></p>
                     <span>¿Already registered?  <Link to="/login">Login here</Link></span>
-                    
                 </div>
             </div>
         </>

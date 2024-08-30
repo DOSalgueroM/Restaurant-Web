@@ -28,6 +28,13 @@ export function Login({loggedIn, setLoggedIn}){
     }
 
     const onLogginButton = () => {
+        const storedUsers = JSON.parse(localStorage.getItem('users')) || [];
+        const foundLocalUser = storedUsers.find(user => username === user.user && password === user.password);
+        
+        if (foundLocalUser) {
+            setLoggedIn(true);
+            return;
+        }
         const founduser = users.find(user => username === user.user && password === user.password);
 
         if (!founduser) {
@@ -39,8 +46,6 @@ export function Login({loggedIn, setLoggedIn}){
         }
     };
 
-   
-    //Then that log in redirect to the page specified
     useEffect(() => {
         if(loggedIn){
             retornar()
