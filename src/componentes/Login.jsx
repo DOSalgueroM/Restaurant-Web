@@ -2,7 +2,7 @@ import '../styles/Login.css'
 import regresarIcon from '../assets/botonRegresar.svg'
 import logoTexto from '../assets/logoConTexto.svg'
 
-import { users } from '../dataUsers.js'
+
 
 import { useNavigate } from 'react-router-dom'
 import { useState, useEffect } from 'react'
