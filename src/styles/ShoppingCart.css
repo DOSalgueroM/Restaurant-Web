@@ -161,4 +161,7 @@
     .logoConTexto img {
         width: 40dvw;
     }
+    span{
+        font-size: 12px;
+    }
 }
