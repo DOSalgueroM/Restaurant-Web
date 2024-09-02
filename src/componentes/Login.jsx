@@ -18,7 +18,14 @@ export function Login({loggedIn, setLoggedIn}){
     
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const [users, setUsers] = useState([]);
 
+    useEffect(() => {
+        fetch('/users.json')
+            .then((response) => response.json())
+            .then((data) => setUsers(data))
+            .catch((error) => console.error('Error loading users:', error));
+    }, []);
     //Handle the form values enters by user.
     function handleChangeUsuario(event) {
         setUsername(event.target.value);
