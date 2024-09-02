@@ -1,11 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Popup from 'reactjs-popup';
 import '../styles/Carousel.css';
-import { productos } from '../dataProductos.js';
 
 
 
 export function Carousel({ allProducts, setAllProducts, total, setTotal, countProducts, setCountProducts, loggedIn}) {
+    const [productos, setProductos] = useState([]);
+
+    useEffect(() => {
+        fetch('/products.json')
+            .then(response => response.json())
+            .then(data => setProductos(data))
+            .catch(error => console.error('Error loading products:', error));
+    }, []);
+
     const onAddProduct = product => {
         if (!loggedIn){
             window.alert("You must log in to order products")
